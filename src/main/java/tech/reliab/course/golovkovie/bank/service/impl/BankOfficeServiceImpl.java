@@ -47,17 +47,17 @@ public class BankOfficeServiceImpl implements BankOfficeService {
                 .totalMoney(bank.getTotalMoney())
                 .rentCost(rentCost)
                 .build();
-        if (bank.getTotalMoney() < totalMoney
-        ) {
-            throw new IllegalArgumentException("Некорректное значение количества денег в банке");
+        if (bank.getTotalMoney() < totalMoney) {
+            throw new IllegalArgumentException("Wrong money amount in bank/office");
         } else {
             bankOffice.setTotalMoney(totalMoney);
         }
         if (atmsAmount > bank.getAtmsAmount()) {
-            throw new IllegalArgumentException("Количество банкоматов в офисе больше, чем общее количество банкоматов у банка");
+            throw new IllegalArgumentException("Wrong ATMs amount in bank/office");
         } else {
             bankOffice.setAtmsAmount(atmsAmount);
         }
+        bank.setOfficesAmount(bank.getOfficesAmount()+1);
         return bankOffice;
     }
 

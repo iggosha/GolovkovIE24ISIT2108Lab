@@ -31,6 +31,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                                    BankOffice bankOffice,
                                    Boolean canIssueCredit,
                                    Double salary) {
+        bank.setEmployeesAmount(bank.getEmployeesAmount()+1);
         return Employee.builder()
                 .id(id)
                 .fullName(fullName)

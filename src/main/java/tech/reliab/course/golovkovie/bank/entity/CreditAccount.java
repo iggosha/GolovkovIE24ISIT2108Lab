@@ -3,15 +3,15 @@ package tech.reliab.course.golovkovie.bank.entity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
 @Builder
-@ToString
 public class CreditAccount {
+
     private Long id;
     private User user;
     private String bankName;
@@ -23,4 +23,21 @@ public class CreditAccount {
     private Double interestRate;
     private Employee providedEmployee;
     private PaymentAccount paymentAccount;
+
+    @Override
+    public String toString() {
+        return "CreditAccount {" +
+                "\nid=" + id +
+                ", \nuser's id=" + user.getId() +
+                ", \nbankName='" + bankName + '\'' +
+                ", \nstartDate=" + startDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) +
+                ", \nendDate=" + endDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) +
+                ", \nmonthsOfCreditAmount=" + monthsOfCreditAmount +
+                ", \ncreditSum=" + creditSum +
+                ", \nmonthlyPayment=" + monthlyPayment +
+                ", \ninterestRate=" + interestRate +
+                ", \nprovidedEmployee's id=" + providedEmployee.getId() +
+                ", \npaymentAccount's id=" + paymentAccount.getId() +
+                "\n}";
+    }
 }

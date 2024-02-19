@@ -3,12 +3,10 @@ package tech.reliab.course.golovkovie.bank.entity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
 @Builder
-@ToString
 public class Bank {
 
     private Long id;
@@ -20,4 +18,19 @@ public class Bank {
     private Integer rating;
     private Double totalMoney;
     private Double interestRate;
+
+    @Override
+    public String toString() {
+        return "Bank {" +
+                "\nid=" + id +
+                ", \nname='" + name + '\'' +
+                ", \nofficesAmount=" + officesAmount +
+                ", \natmsAmount=" + atmsAmount +
+                ", \nemployeesAmount=" + employeesAmount +
+                ", \ncustomersAmount=" + customersAmount +
+                ", \nrating=" + rating +
+                ", \ntotalMoney=" + totalMoney +
+                ", \ninterestRate=" + interestRate +
+                "\n}";
+    }
 }

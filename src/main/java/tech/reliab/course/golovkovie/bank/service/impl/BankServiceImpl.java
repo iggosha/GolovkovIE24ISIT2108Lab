@@ -35,7 +35,7 @@ public class BankServiceImpl implements BankService {
                 .rating(random.nextInt(101))
                 .totalMoney(Math.round(random.nextDouble(1_000_000) * 100.0) / 100.0)
                 .build();
-        bank.setInterestRate(Math.round(20 - bank.getRating() * 0.2 * 100.0) / 100.0);
+        bank.setInterestRate(Math.round((20 - bank.getRating() * 0.2) * 100.0) / 100.0);
         return bank;
     }
 

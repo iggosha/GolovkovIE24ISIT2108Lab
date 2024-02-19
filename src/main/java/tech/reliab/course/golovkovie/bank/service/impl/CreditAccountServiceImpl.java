@@ -33,7 +33,7 @@ public class CreditAccountServiceImpl implements CreditAccountService {
                                              Employee providedEmployee,
                                              PaymentAccount paymentAccount,
                                              Bank bank) {
-        return CreditAccount.builder()
+        CreditAccount creditAccount = CreditAccount.builder()
                 .id(id)
                 .user(user)
                 .bankName(bank.getName())
@@ -46,6 +46,8 @@ public class CreditAccountServiceImpl implements CreditAccountService {
                 .providedEmployee(providedEmployee)
                 .paymentAccount(paymentAccount)
                 .build();
+        user.getCreditAccounts().add(creditAccount);
+        return creditAccount;
     }
 
     @Override

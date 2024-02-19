@@ -21,8 +21,7 @@ public class UserServiceImpl implements UserService {
      *                    <br>Credit accounts (by default empty)
      *                    <br>Debit accounts (by default empty)
      *                    <br>Credit rating for the bank (generated randomly based on
-     *                    the monthly income, from less than 1,000 - 100, from 1,000 to 2,000 - 200 and so on.
-     *                    up to 10,000
+     *                    the monthly income, from less than 1000 - 100, from 1000 to 2000 - 200 and so on up to 10000)
      * @return {@link User}
      */
     @Override
@@ -37,7 +36,7 @@ public class UserServiceImpl implements UserService {
                 .fullName(fullName)
                 .dateOfBirth(dateOfBirth)
                 .placeOfWork(placeOfWork)
-                .monthlyIncome(Math.round(random.nextDouble(10_000)* 100.0) / 100.0)
+                .monthlyIncome(Math.round(random.nextDouble(10_000) * 100.0) / 100.0)
                 .banks(banks)
                 .creditAccounts(new ArrayList<>())
                 .paymentAccounts(new ArrayList<>())
@@ -54,6 +53,7 @@ public class UserServiceImpl implements UserService {
             case 10 -> 1000;
             default -> 100;
         });
+        banks.forEach(bank -> bank.setCustomersAmount(bank.getCustomersAmount() + 1));
         return user;
     }
 

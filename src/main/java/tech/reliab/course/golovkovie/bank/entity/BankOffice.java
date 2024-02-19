@@ -3,12 +3,10 @@ package tech.reliab.course.golovkovie.bank.entity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
 @Builder
-@ToString
 public class BankOffice {
 
     private Long id;
@@ -22,4 +20,21 @@ public class BankOffice {
     private Boolean canAcceptMoney;
     private Double totalMoney;
     private Double rentCost;
+
+    @Override
+    public String toString() {
+        return "BankOffice {" +
+                "\nid=" + id +
+                ", \nname='" + name + '\'' +
+                ", \naddress='" + address + '\'' +
+                ", \nisWorking=" + isWorking +
+                ", \ncanPlaceAtm=" + canPlaceAtm +
+                ", \natmsAmount=" + atmsAmount +
+                ", \ncanIssueCredit=" + canIssueCredit +
+                ", \ncanDispenseMoney=" + canDispenseMoney +
+                ", \ncanAcceptMoney=" + canAcceptMoney +
+                ", \ntotalMoney=" + totalMoney +
+                ", \nrentCost=" + rentCost +
+                "\n}";
+    }
 }

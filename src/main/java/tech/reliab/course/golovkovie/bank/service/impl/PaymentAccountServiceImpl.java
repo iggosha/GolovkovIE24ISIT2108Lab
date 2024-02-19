@@ -11,18 +11,21 @@ public class PaymentAccountServiceImpl implements PaymentAccountService {
      * @param id      the id
      * @param user    the user
      *                <br>Name of the bank where this account is opened
-     * @param balance the balance
+     *                <br>Balance (0.0 by default)
      * @param bank    the bank
      * @return {@link PaymentAccount}
      */
     @Override
-    public PaymentAccount createPaymentAccount(Long id, User user, Double balance, Bank bank) {
-        return PaymentAccount.builder()
+    public PaymentAccount createPaymentAccount(Long id, User user, Bank bank) {
+        PaymentAccount paymentAccount = PaymentAccount.builder()
                 .id(id)
                 .user(user)
                 .bankName(bank.getName())
-                .balance(balance)
+                .balance(0.0)
                 .build();
+
+        user.getPaymentAccounts().add(paymentAccount);
+        return paymentAccount;
     }
 
     @Override

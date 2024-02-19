@@ -22,11 +22,11 @@ public class Main {
 
         Bank bank = bankService.createBank(
                 1L,
-                "qwe");
+                "Alfa bank");
         BankOffice bankOffice = bankOfficeService.createBankOffice(
                 1L,
-                "qwe",
-                "qwe",
+                "Alfa office #11",
+                "Alfovskaya, 33",
                 true,
                 true,
                 0,
@@ -39,17 +39,17 @@ public class Main {
         );
         Employee employee = employeeService.createEmployee(
                 1L,
-                "qwe",
+                "Petrov Petr Petrovich",
                 LocalDate.now(),
-                "qwe", bank,
+                "Manager", bank,
                 true,
                 bankOffice,
                 true,
                 1.0);
         BankAtm bankAtm = bankAtmService.createBankAtm(
                 1L,
-                "qwe",
-                "qwe",
+                "Alfa ATM #33",
+                "Working",
                 bank,
                 bankOffice,
                 employee,
@@ -60,15 +60,14 @@ public class Main {
         );
         User user = userService.createUser(
                 1L,
-                "qwe",
+                "Ivanov Ivan Ivanovich",
                 LocalDate.now(),
-                "qwe",
+                "X5",
                 List.of(bank)
         );
         PaymentAccount paymentAccount = paymentAccountService.createPaymentAccount(
                 1L,
                 user,
-                1.0,
                 bank
         );
         CreditAccount creditAccount = creditAccountService.createCreditAccount(
