@@ -25,7 +25,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User {" +
+        return
                 "\nid=" + id +
                 ", \nfullName='" + fullName + '\'' +
                 ", \ndateOfBirth=" + dateOfBirth.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) +
@@ -35,6 +35,6 @@ public class User {
                 ", \ncreditAccounts' ids=" + creditAccounts.stream().map(CreditAccount::getId).toList() +
                 ", \npaymentAccounts' ids=" + paymentAccounts.stream().map(PaymentAccount::getId).toList() +
                 ", \ncreditRating=" + creditRating +
-                "\n}";
+                "\n";
     }
 }

@@ -21,7 +21,7 @@ public class Bank {
 
     @Override
     public String toString() {
-        return "Bank {" +
+        return
                 "\nid=" + id +
                 ", \nname='" + name + '\'' +
                 ", \nofficesAmount=" + officesAmount +
@@ -31,6 +31,6 @@ public class Bank {
                 ", \nrating=" + rating +
                 ", \ntotalMoney=" + totalMoney +
                 ", \ninterestRate=" + interestRate +
-                "\n}";
+                "\n";
     }
 }

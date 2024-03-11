@@ -23,18 +23,21 @@ public class BankAtm {
 
     @Override
     public String toString() {
-        return "BankAtm {" +
+        return
                 "\nid=" + id +
                 ", \nname='" + name + '\'' +
                 ", \naddress='" + address + '\'' +
                 ", \nstatus='" + status + '\'' +
                 ", \nbank's id=" + bank.getId() +
+                ", \nbank's name=" + bank.getName() +
                 ", \nbankOffice's id=" + bankOffice.getId() +
+                ", \nbankOffice's name=" + bankOffice.getName() +
                 ", \nservingEmployee's id=" + servingEmployee.getId() +
+                ", \nservingEmployee's name=" + servingEmployee.getFullName() +
                 ", \ncanDispenseMoney=" + canDispenseMoney +
                 ", \ncanAcceptMoney=" + canAcceptMoney +
                 ", \ntotalMoney=" + totalMoney +
                 ", \nmaintenanceCost=" + maintenanceCost +
-                "\n}";
+                "\n";
     }
 }

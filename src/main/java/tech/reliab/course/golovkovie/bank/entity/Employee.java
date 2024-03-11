@@ -24,16 +24,17 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee {" +
+        return
                 "\nid=" + id +
                 ", \nfullName='" + fullName + '\'' +
                 ", \ndateOfBirth=" + dateOfBirth.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) +
                 ", \nposition='" + position + '\'' +
                 ", \nbank's id=" + bank.getId() +
+                ", \nbank's name=" + bank.getName() +
                 ", \nisRemote=" + isRemote +
                 ", \nbankOffice's id=" + bankOffice.getId() +
                 ", \ncanIssueCredit=" + canIssueCredit +
                 ", \nsalary=" + salary +
-                "\n}";
+                "\n";
     }
 }

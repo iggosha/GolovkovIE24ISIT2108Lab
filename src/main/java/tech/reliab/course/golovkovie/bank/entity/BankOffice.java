@@ -23,7 +23,7 @@ public class BankOffice {
 
     @Override
     public String toString() {
-        return "BankOffice {" +
+        return
                 "\nid=" + id +
                 ", \nname='" + name + '\'' +
                 ", \naddress='" + address + '\'' +
@@ -35,6 +35,6 @@ public class BankOffice {
                 ", \ncanAcceptMoney=" + canAcceptMoney +
                 ", \ntotalMoney=" + totalMoney +
                 ", \nrentCost=" + rentCost +
-                "\n}";
+                "\n";
     }
 }

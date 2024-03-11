@@ -16,11 +16,11 @@ public class PaymentAccount {
 
     @Override
     public String toString() {
-        return "PaymentAccount {" +
+        return
                 "\nid=" + id +
                 ", \nuser's id=" + user.getId() +
                 ", \nbankName='" + bankName + '\'' +
                 ", \nbalance=" + balance +
-                "\n}";
+                "\n";
     }
 }

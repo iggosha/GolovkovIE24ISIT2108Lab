@@ -26,7 +26,7 @@ public class CreditAccount {
 
     @Override
     public String toString() {
-        return "CreditAccount {" +
+        return
                 "\nid=" + id +
                 ", \nuser's id=" + user.getId() +
                 ", \nbankName='" + bankName + '\'' +
@@ -38,6 +38,6 @@ public class CreditAccount {
                 ", \ninterestRate=" + interestRate +
                 ", \nprovidedEmployee's id=" + providedEmployee.getId() +
                 ", \npaymentAccount's id=" + paymentAccount.getId() +
-                "\n}";
+                "\n";
     }
 }
