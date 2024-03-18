@@ -18,23 +18,33 @@ public class User {
     private LocalDate dateOfBirth;
     private String placeOfWork;
     private Double monthlyIncome;
+    private Integer creditRating;
     private List<Bank> banks;
     private List<CreditAccount> creditAccounts;
     private List<PaymentAccount> paymentAccounts;
-    private Integer creditRating;
 
     @Override
     public String toString() {
-        return
-                "\nid=" + id +
-                ", \nfullName='" + fullName + '\'' +
-                ", \ndateOfBirth=" + dateOfBirth.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) +
-                ", \nplaceOfWork='" + placeOfWork + '\'' +
-                ", \nmonthlyIncome=" + monthlyIncome +
-                ", \nbanks' ids=" + banks.stream().map(Bank::getId).toList() +
-                ", \ncreditAccounts' ids=" + creditAccounts.stream().map(CreditAccount::getId).toList() +
-                ", \npaymentAccounts' ids=" + paymentAccounts.stream().map(PaymentAccount::getId).toList() +
-                ", \ncreditRating=" + creditRating +
-                "\n";
+        return """
+                    id: %d,
+                    fullName: %s,
+                    dateOfBirth: %s,
+                    placeOfWork: %s,
+                    monthlyIncome: %.2f,
+                    creditRating: %d,
+                    banks: %s,
+                    creditAccounts: %s,
+                    paymentAccounts: %s
+                """.formatted(
+                id,
+                fullName,
+                dateOfBirth.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")),
+                placeOfWork,
+                monthlyIncome,
+                creditRating,
+                banks.stream().map(Bank::getName).toList(),
+                creditAccounts.stream().map(CreditAccount::getId).toList(),
+                paymentAccounts.stream().map(PaymentAccount::getId).toList()
+        );
     }
 }

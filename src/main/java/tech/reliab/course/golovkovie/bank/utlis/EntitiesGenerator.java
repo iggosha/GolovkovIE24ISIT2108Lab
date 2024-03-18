@@ -5,12 +5,12 @@ import tech.reliab.course.golovkovie.bank.service.*;
 import tech.reliab.course.golovkovie.bank.service.impl.*;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
 public class EntitiesGenerator {
 
+    private static long idCounter = 0L;
     private final BankService bankService = new BankServiceImpl();
     private final BankAtmService bankAtmService = new BankAtmServiceImpl();
     private final BankOfficeService bankOfficeService = new BankOfficeServiceImpl();
@@ -27,87 +27,82 @@ public class EntitiesGenerator {
 
     public Bank generateBank() {
         return bankService.createBank(
-                random.nextLong(),
+                ++idCounter,
                 "Bank " + UUID.randomUUID().toString().substring(0, 2)
         );
     }
 
-    public BankOffice generateBankOffice(Bank bank, int orderNumber) {
+    public BankOffice generateBankOffice(Bank bank) {
         return bankOfficeService.createBankOffice(
-                random.nextLong(),
-                bank.getName() + " office " + orderNumber,
-                "Bankirskaya, " + orderNumber,
+                ++idCounter,
+                bank.getName() + " office " + ++idCounter,
+                "Bankirskaya, " + ++idCounter,
+                (double) idCounter * 10,
+                (double) idCounter * 5,
                 true,
                 true,
-                0,
                 true,
                 true,
                 true,
-                (double) orderNumber * 10,
-                (double) orderNumber * 5,
                 bank
         );
     }
 
-    public Employee generateEmployee(Bank bank, BankOffice bankOffice, int orderNumber) {
+    public Employee generateEmployee(BankOffice bankOffice) {
         return employeeService.createEmployee(
-                random.nextLong(),
+                ++idCounter,
                 getGeneratedFullName(),
                 LocalDate.now(),
                 positions[random.nextInt(4)],
-                bank,
                 true,
-                bankOffice,
                 true,
-                (double) orderNumber * 10
+                (double) idCounter * 10,
+                bankOffice
         );
     }
 
-    public BankAtm generateBankAtm(Bank bank, BankOffice bankOffice, Employee employee, int orderNumber) {
+    public BankAtm generateBankAtm(Employee employee) {
         return bankAtmService.createBankAtm(
-                random.nextLong(),
-                bank.getName() + " ATM #" + orderNumber,
+                ++idCounter,
+                employee.getBankOffice().getBank().getName() + " ATM #" + ++idCounter,
+                employee.getBankOffice().getAddress(),
                 "Working",
-                bank,
-                bankOffice,
-                employee,
+                (double) 0,
+                (double) idCounter * 5,
                 true,
                 true,
-                (double) orderNumber * 10,
-                (double) orderNumber * 5
+                employee
         );
     }
 
-    public User generateUser(List<Bank> banks) {
+    public User generateUser() {
         return userService.createUser(
-                random.nextLong(),
+                ++idCounter,
                 getGeneratedFullName(),
                 LocalDate.now(),
-                placesOfWork[random.nextInt(4)],
-                banks
+                placesOfWork[random.nextInt(4)]
         );
     }
 
     public PaymentAccount generatePaymentAccount(User user, Bank bank) {
         return paymentAccountService.createPaymentAccount(
-                random.nextLong(),
+                ++idCounter,
                 user,
                 bank
         );
     }
 
-    public CreditAccount generateCreditAccount(User user, Employee employee, PaymentAccount paymentAccount, Bank bank, int orderNumber) {
+    public CreditAccount generateCreditAccount(User user, Employee employee, PaymentAccount paymentAccount) {
         return creditAccountService.createCreditAccount(
-                random.nextLong(),
+                ++idCounter,
+                LocalDate.now(),
+                LocalDate.now(),
+                (int) idCounter * 2,
+                (double) idCounter * 10,
+                (double) idCounter * 5,
                 user,
-                LocalDate.now(),
-                LocalDate.now(),
-                orderNumber * 2,
-                (double) orderNumber * 10,
-                (double) orderNumber * 5,
                 employee,
-                paymentAccount,
-                bank
+                paymentAccount
         );
     }
 

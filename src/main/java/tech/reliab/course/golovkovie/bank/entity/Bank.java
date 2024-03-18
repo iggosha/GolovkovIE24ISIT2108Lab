@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -11,26 +13,34 @@ public class Bank {
 
     private Long id;
     private String name;
-    private Integer officesAmount;
-    private Integer atmsAmount;
-    private Integer employeesAmount;
-    private Integer customersAmount;
     private Integer rating;
     private Double totalMoney;
     private Double interestRate;
+    private List<BankOffice> offices;
+    private List<User> users;
+    private List<PaymentAccount> paymentAccounts;
+
 
     @Override
     public String toString() {
-        return
-                "\nid=" + id +
-                ", \nname='" + name + '\'' +
-                ", \nofficesAmount=" + officesAmount +
-                ", \natmsAmount=" + atmsAmount +
-                ", \nemployeesAmount=" + employeesAmount +
-                ", \ncustomersAmount=" + customersAmount +
-                ", \nrating=" + rating +
-                ", \ntotalMoney=" + totalMoney +
-                ", \ninterestRate=" + interestRate +
-                "\n";
+        return """
+                    id: %d,
+                    name: %s,
+                    rating: %d,
+                    totalMoney: %.2f,
+                    interestRate: %.2f,
+                    offices: %s,
+                    users: %s,
+                    paymentAccounts: %s
+                """.formatted(
+                id,
+                name,
+                rating,
+                totalMoney,
+                interestRate,
+                offices.stream().map(BankOffice::getName).toList(),
+                users.stream().map(User::getFullName).toList(),
+                paymentAccounts.stream().map(PaymentAccount::getId).toList()
+        );
     }
 }

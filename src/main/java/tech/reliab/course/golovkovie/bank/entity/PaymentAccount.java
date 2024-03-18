@@ -10,17 +10,22 @@ import lombok.Setter;
 public class PaymentAccount {
 
     private Long id;
-    private User user;
-    private String bankName;
     private Double balance;
+    private User user;
+    private Bank bank;
 
     @Override
     public String toString() {
-        return
-                "\nid=" + id +
-                ", \nuser's id=" + user.getId() +
-                ", \nbankName='" + bankName + '\'' +
-                ", \nbalance=" + balance +
-                "\n";
+        return """
+                    id: %d,
+                    balance: %.2f,
+                    user: %s,
+                    bank: %s
+                """.formatted(
+                id,
+                balance,
+                user.getFullName(),
+                bank.getName()
+        );
     }
 }

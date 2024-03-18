@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,25 +17,39 @@ public class Employee {
     private String fullName;
     private LocalDate dateOfBirth;
     private String position;
-    private Bank bank;
-    private Boolean isRemote;
-    private BankOffice bankOffice;
-    private Boolean canIssueCredit;
     private Double salary;
+    private Boolean isRemote;
+    private Boolean canIssueCredit;
+    private BankOffice bankOffice;
+    private List<BankAtm> servedAtms;
+    private List<CreditAccount> providedCreditAccounts;
 
     @Override
     public String toString() {
-        return
-                "\nid=" + id +
-                ", \nfullName='" + fullName + '\'' +
-                ", \ndateOfBirth=" + dateOfBirth.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) +
-                ", \nposition='" + position + '\'' +
-                ", \nbank's id=" + bank.getId() +
-                ", \nbank's name=" + bank.getName() +
-                ", \nisRemote=" + isRemote +
-                ", \nbankOffice's id=" + bankOffice.getId() +
-                ", \ncanIssueCredit=" + canIssueCredit +
-                ", \nsalary=" + salary +
-                "\n";
+        return """
+                    id: %d,
+                    fullName: %s,
+                    dateOfBirth: %s,
+                    position: %s,
+                    salary: %.2f,
+                    isRemote: %b,
+                    canIssueCredit: %b,
+                    bankOffice: %s,
+                    servedAtms: %s,
+                    providedCreditAccounts: %s
+                """.formatted(
+                id,
+                fullName,
+                dateOfBirth.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")),
+                position,
+                salary,
+                isRemote,
+                canIssueCredit,
+                bankOffice.getName(),
+                servedAtms.stream().map(BankAtm::getName).toList(),
+                providedCreditAccounts.stream().map(CreditAccount::getId).toList()
+        );
     }
+
+
 }
