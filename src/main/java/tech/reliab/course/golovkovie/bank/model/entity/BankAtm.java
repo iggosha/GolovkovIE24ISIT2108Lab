@@ -1,23 +1,47 @@
-package tech.reliab.course.golovkovie.bank.entity;
+package tech.reliab.course.golovkovie.bank.model.entity;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
+@Entity
+@Table(name = "bank_atms")
+@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class BankAtm {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     private String address;
+
     private String status;
+
+    @Column(name = "total_money")
     private Double totalMoney;
+
+    @Column(name = "maintenance_cost")
     private Double maintenanceCost;
+
+    @Column(name = "can_dispense_money")
     private Boolean canDispenseMoney;
+
+    @Column(name = "can_accept_money")
     private Boolean canAcceptMoney;
+
+    @ManyToOne
+    @JoinColumn(name = "bank_office_id")
     private BankOffice bankOffice;
+
+    @ManyToOne
+    @JoinColumn(name = "serving_employee_id")
     private Employee servingEmployee;
 
     @Override

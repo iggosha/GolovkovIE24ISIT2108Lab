@@ -1,14 +1,13 @@
 package tech.reliab.course.golovkovie.bank.service.impl;
 
-import tech.reliab.course.golovkovie.bank.entity.BankAtm;
-import tech.reliab.course.golovkovie.bank.entity.BankOffice;
-import tech.reliab.course.golovkovie.bank.entity.Employee;
+import tech.reliab.course.golovkovie.bank.model.entity.BankAtm;
+import tech.reliab.course.golovkovie.bank.model.entity.BankOffice;
+import tech.reliab.course.golovkovie.bank.model.entity.Employee;
 import tech.reliab.course.golovkovie.bank.service.BankAtmService;
 
 public class BankAtmServiceImpl implements BankAtmService {
 
     /**
-     * @param id               the id
      * @param name             the name
      *                         <br>Address (matches the address of the bank office)
      * @param status           the status (working/not working/no money)
@@ -21,8 +20,7 @@ public class BankAtmServiceImpl implements BankAtmService {
      * @return {@link BankAtm}
      */
     @Override
-    public BankAtm createBankAtm(Long id,
-                                 String name,
+    public BankAtm createBankAtm(String name,
                                  String address,
                                  String status,
                                  Double totalMoney,
@@ -32,7 +30,6 @@ public class BankAtmServiceImpl implements BankAtmService {
                                  Employee servingEmployee) {
         BankOffice bankOffice = servingEmployee.getBankOffice();
         BankAtm bankAtm = BankAtm.builder()
-                .id(id)
                 .name(name)
                 .address(address)
                 .status(status)

@@ -1,6 +1,6 @@
 package tech.reliab.course.golovkovie.bank.service.impl;
 
-import tech.reliab.course.golovkovie.bank.entity.User;
+import tech.reliab.course.golovkovie.bank.model.entity.User;
 import tech.reliab.course.golovkovie.bank.service.UserService;
 
 import java.time.LocalDate;

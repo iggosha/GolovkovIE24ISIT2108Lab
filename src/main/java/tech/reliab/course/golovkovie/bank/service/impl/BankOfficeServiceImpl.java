@@ -1,7 +1,7 @@
 package tech.reliab.course.golovkovie.bank.service.impl;
 
-import tech.reliab.course.golovkovie.bank.entity.Bank;
-import tech.reliab.course.golovkovie.bank.entity.BankOffice;
+import tech.reliab.course.golovkovie.bank.model.entity.Bank;
+import tech.reliab.course.golovkovie.bank.model.entity.BankOffice;
 import tech.reliab.course.golovkovie.bank.service.BankOfficeService;
 
 import java.util.ArrayList;

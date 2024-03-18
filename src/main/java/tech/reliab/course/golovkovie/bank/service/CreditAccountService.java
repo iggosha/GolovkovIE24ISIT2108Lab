@@ -1,6 +1,9 @@
 package tech.reliab.course.golovkovie.bank.service;
 
-import tech.reliab.course.golovkovie.bank.entity.*;
+import tech.reliab.course.golovkovie.bank.model.entity.CreditAccount;
+import tech.reliab.course.golovkovie.bank.model.entity.Employee;
+import tech.reliab.course.golovkovie.bank.model.entity.PaymentAccount;
+import tech.reliab.course.golovkovie.bank.model.entity.User;
 
 import java.time.LocalDate;
 
@@ -12,15 +15,15 @@ public interface CreditAccountService {
     /**
      * Create credit account.
      *
-     * @param id                  the id
-     * @param user                the user
-     * @param startDate           the start date
-     * @param endDate             the end date
+     * @param id                   the id
+     * @param user                 the user
+     * @param startDate            the start date
+     * @param endDate              the end date
      * @param monthsOfCreditAmount the month of credit amount
-     * @param creditSum           the credit sum
-     * @param monthlyPayment      the monthly payment
-     * @param providedEmployee    the provided employee
-     * @param paymentAccount      the payment account
+     * @param creditSum            the credit sum
+     * @param monthlyPayment       the monthly payment
+     * @param providedEmployee     the provided employee
+     * @param paymentAccount       the payment account
      * @return the credit account
      */
     CreditAccount createCreditAccount(Long id,

@@ -1,7 +1,7 @@
 package tech.reliab.course.golovkovie.bank.service;
 
-import tech.reliab.course.golovkovie.bank.entity.BankAtm;
-import tech.reliab.course.golovkovie.bank.entity.Employee;
+import tech.reliab.course.golovkovie.bank.model.entity.BankAtm;
+import tech.reliab.course.golovkovie.bank.model.entity.Employee;
 
 /**
  * The interface BankAtmService.
@@ -11,7 +11,6 @@ public interface BankAtmService {
     /**
      * Create bank atm.
      *
-     * @param id               the id
      * @param name             the name
      * @param status           the status
      * @param totalMoney       the total money
@@ -21,7 +20,7 @@ public interface BankAtmService {
      * @param servingEmployee  the serving employee
      * @return the bank atm
      */
-    BankAtm createBankAtm(Long id,
+    BankAtm createBankAtm(
                           String name,
                           String address,
                           String status,

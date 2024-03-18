@@ -1,7 +1,7 @@
 package tech.reliab.course.golovkovie.bank.service;
 
-import tech.reliab.course.golovkovie.bank.entity.Bank;
-import tech.reliab.course.golovkovie.bank.entity.BankOffice;
+import tech.reliab.course.golovkovie.bank.model.entity.Bank;
+import tech.reliab.course.golovkovie.bank.model.entity.BankOffice;
 
 /**
  * The interface Bank office service.

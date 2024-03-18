@@ -1,7 +1,7 @@
 package tech.reliab.course.golovkovie.bank.service;
 
-import tech.reliab.course.golovkovie.bank.entity.BankOffice;
-import tech.reliab.course.golovkovie.bank.entity.Employee;
+import tech.reliab.course.golovkovie.bank.model.entity.BankOffice;
+import tech.reliab.course.golovkovie.bank.model.entity.Employee;
 
 import java.time.LocalDate;
 

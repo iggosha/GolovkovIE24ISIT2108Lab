@@ -1,23 +1,42 @@
-package tech.reliab.course.golovkovie.bank.entity;
+package tech.reliab.course.golovkovie.bank.model.entity;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Entity
+@Table(name = "banks")
+@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Bank {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     private Integer rating;
+
+    @Column(name = "total_money")
     private Double totalMoney;
+
+    @Column(name = "interest_rate")
     private Double interestRate;
+
+    @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL)
     private List<BankOffice> offices;
+
+    @ManyToMany(mappedBy = "banks")
     private List<User> users;
+
+    @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL)
     private List<PaymentAccount> paymentAccounts;
 
 

@@ -1,8 +1,8 @@
 package tech.reliab.course.golovkovie.bank.service;
 
-import tech.reliab.course.golovkovie.bank.entity.Bank;
-import tech.reliab.course.golovkovie.bank.entity.PaymentAccount;
-import tech.reliab.course.golovkovie.bank.entity.User;
+import tech.reliab.course.golovkovie.bank.model.entity.Bank;
+import tech.reliab.course.golovkovie.bank.model.entity.PaymentAccount;
+import tech.reliab.course.golovkovie.bank.model.entity.User;
 
 /**
  * The interface Payment account service.

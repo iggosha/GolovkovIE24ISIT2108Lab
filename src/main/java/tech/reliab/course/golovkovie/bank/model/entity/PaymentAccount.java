@@ -1,17 +1,32 @@
-package tech.reliab.course.golovkovie.bank.entity;
+package tech.reliab.course.golovkovie.bank.model.entity;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
+
+@Entity
+@Table(name = "payment_accounts")
+@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PaymentAccount {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private Double balance;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "bank_id")
     private Bank bank;
 
     @Override

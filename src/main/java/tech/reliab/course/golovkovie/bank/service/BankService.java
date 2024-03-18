@@ -1,6 +1,9 @@
 package tech.reliab.course.golovkovie.bank.service;
 
-import tech.reliab.course.golovkovie.bank.entity.Bank;
+import tech.reliab.course.golovkovie.bank.model.dto.BankDto;
+import tech.reliab.course.golovkovie.bank.model.entity.Bank;
+
+import java.util.List;
 
 /**
  * The interface Bank service.
@@ -10,11 +13,9 @@ public interface BankService {
     /**
      * Create bank.
      *
-     * @param id   the id
-     * @param name the name
-     * @return the bank
+     * @param bankDto bankDto
      */
-    Bank createBank(Long id, String name);
+    void createBank(BankDto bankDto);
 
     /**
      * Get bank by id.
@@ -22,7 +23,14 @@ public interface BankService {
      * @param id the id
      * @return the bank by id
      */
-    Bank getBankById(Long id);
+    BankDto getBankDtoById(Long id);
+
+    /**
+     * Get all banks
+     *
+     * @return all banks
+     */
+    List<BankDto> getAllDto();
 
     /**
      * Update bank by id.
