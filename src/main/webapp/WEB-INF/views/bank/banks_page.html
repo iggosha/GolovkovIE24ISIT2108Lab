@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BankLab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/resources/css/styles.css}" type="text/css">
+    <link rel="icon" th:href="@{/resources/img/logo.png}" type="image/png" sizes="64x64">
+</head>
+<body>
+<h1>Банки</h1>
+<form th:method="post" th:action="@{/banklab/banks}" th:object="${bankRequestDto}">
+    <h2>Добавить банк</h2>
+    <label>
+        Введите название:
+        <input type="text" th:field="*{name}" placeholder="Название" required>
+    </label>
+    <input type="submit" value="Добавить банк">
+</form>
+<h1>Список банков:</h1>
+<div th:each="bankResponseDto : ${bankResponseDtos}" class="item">
+    <span>Название:</span>
+    <span th:text="${bankResponseDto.getName()}"></span>
+    <span>Процентная ставка:</span>
+    <span th:text="${bankResponseDto.getInterestRate()}"></span>
+    <span>Рейтинг:</span>
+    <span th:text="${bankResponseDto.getRating()}"></span>
+    <span>Сумма средств:</span>
+    <span th:text="${bankResponseDto.getTotalMoney()}"></span>
+    <a th:href="@{/banklab/banks/{id}(id=${bankResponseDto.getId()})}"><button>Перейти</button></a>
+</div>
+</body>
+</html>

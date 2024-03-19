@@ -1,7 +1,7 @@
 package tech.reliab.course.golovkovie.bank.service;
 
-import tech.reliab.course.golovkovie.bank.model.dto.BankDto;
-import tech.reliab.course.golovkovie.bank.model.entity.Bank;
+import tech.reliab.course.golovkovie.bank.model.dto.request.BankRequestDto;
+import tech.reliab.course.golovkovie.bank.model.dto.response.BankResponseDto;
 
 import java.util.List;
 
@@ -10,41 +10,13 @@ import java.util.List;
  */
 public interface BankService {
 
-    /**
-     * Create bank.
-     *
-     * @param bankDto bankDto
-     */
-    void createBank(BankDto bankDto);
+    void create(BankRequestDto bankRequestDto);
 
-    /**
-     * Get bank by id.
-     *
-     * @param id the id
-     * @return the bank by id
-     */
-    BankDto getBankDtoById(Long id);
+    BankResponseDto getById(Long id);
 
-    /**
-     * Get all banks
-     *
-     * @return all banks
-     */
-    List<BankDto> getAllDto();
+    List<BankResponseDto> getAll();
 
-    /**
-     * Update bank by id.
-     *
-     * @param id   the id
-     * @param bank the bank
-     */
-    void updateBankById(Long id, Bank bank);
+    void update(BankResponseDto bankResponseDto);
 
-    /**
-     * Delete bank by id.
-     *
-     * @param id   the id
-     * @param bank the bank
-     */
-    void deleteBankById(Long id, Bank bank);
+    void deleteById(Long id);
 }

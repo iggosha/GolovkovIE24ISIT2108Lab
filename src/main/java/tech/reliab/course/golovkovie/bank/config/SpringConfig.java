@@ -91,7 +91,7 @@ public class SpringConfig implements WebMvcConfigurer {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();
         lcemfb.setDataSource(dataSource());
-        lcemfb.setPackagesToScan("tech.reliab.course.golovkovie.bank.model");
+        lcemfb.setPackagesToScan("tech.reliab.course.golovkovie.bank.model.entity");
         lcemfb.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         lcemfb.setJpaProperties(hibernateProperties());
         return lcemfb;

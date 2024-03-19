@@ -2,7 +2,9 @@ package tech.reliab.course.golovkovie.bank.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import tech.reliab.course.golovkovie.bank.model.dto.BankDto;
+import org.springframework.transaction.annotation.Transactional;
+import tech.reliab.course.golovkovie.bank.model.dto.request.BankRequestDto;
+import tech.reliab.course.golovkovie.bank.model.dto.response.BankResponseDto;
 import tech.reliab.course.golovkovie.bank.model.entity.Bank;
 import tech.reliab.course.golovkovie.bank.repository.BankRepository;
 import tech.reliab.course.golovkovie.bank.service.BankService;
@@ -17,25 +19,18 @@ import java.util.Random;
  */
 @Service
 @AllArgsConstructor
+@Transactional(readOnly = true)
 public class BankServiceImpl implements BankService {
 
+    private static final Random random = new Random();
     private final BankRepository bankRepository;
     private final MappingUtils mappingUtils;
 
-    /**
-     *             <br>Number of offices (automatically filled and calculated when adding a new office, default 0 <br>
-     *             Number of ATMs (automatically filled and calculated when adding a new ATM, default 0<br>
-     *             Number of employees (automatically filled and calculated when adding a new employee, default 0<br>
-     *             Number of clients (automatically filled and calculated when adding a new client, default 0<br>
-     *             Bank rating (generated randomly, from 0 to 100, where 100 is the highest score, the higher the bank rating, the lower the interest rate)<br>
-     *             Total money in the bank (generated randomly, but not more than 1,000,000)<br>
-     *             Interest rate (generated randomly, but not more than 20%, however, the bank rating must be taken into account, the higher it is, the lower the interest rate should be generated)<br>
-     */
     @Override
-    public void createBank(BankDto bankDto) {
-        Random random = new Random();
+    @Transactional
+    public void create(BankRequestDto bankRequestDto) {
         Bank bank = Bank.builder()
-                .name(bankDto.getName())
+                .name(bankRequestDto.getName())
                 .rating(random.nextInt(101))
                 .totalMoney(Math.round(random.nextDouble(1_000_000) * 100.0) / 100.0)
                 .offices(new ArrayList<>())
@@ -47,27 +42,31 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
-    public BankDto getBankDtoById(Long id) {
-        return mappingUtils.mapToBankDto(
+    public BankResponseDto getById(Long id) {
+        return mappingUtils.mapToBankResponseDto(
                 bankRepository.findById(id)
                         .orElse(new Bank())
         );
     }
 
     @Override
-    public List<BankDto> getAllDto() {
+    public List<BankResponseDto> getAll() {
         return bankRepository.findAll()
                 .stream()
-                .map(mappingUtils::mapToBankDto)
+                .map(mappingUtils::mapToBankResponseDto)
                 .toList();
     }
 
     @Override
-    public void updateBankById(Long id, Bank bank) {
+    @Transactional
+    public void update(BankResponseDto bankResponseDto) {
+        Bank bank = mappingUtils.mapToBankEntity(bankResponseDto);
+        bankRepository.save(bank);
     }
 
     @Override
-    public void deleteBankById(Long id, Bank bank) {
-
+    @Transactional
+    public void deleteById(Long id) {
+        bankRepository.deleteById(id);
     }
 }

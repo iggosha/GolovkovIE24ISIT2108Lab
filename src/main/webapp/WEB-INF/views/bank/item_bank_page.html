@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BankLab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/resources/css/styles.css}" type="text/css">
+    <link rel="icon" th:href="@{/resources/img/logo.png}" type="image/png" sizes="64x64">
+</head>
+<body>
+<h1>Банк</h1>
+<div th:if="${bankResponseDto}" class="item">
+    <h2>Информация</h2>
+    <span>Название:</span>
+    <span th:text="${bankResponseDto.getName()}"></span>
+    <span>Процентная ставка:</span>
+    <span th:text="${bankResponseDto.getInterestRate()}"></span>
+    <span>Рейтинг:</span>
+    <span th:text="${bankResponseDto.getRating()}"></span>
+    <span>Сумма средств:</span>
+    <span th:text="${bankResponseDto.getTotalMoney()}"></span>
+    <h2><a th:href="@{/banklab/banks}">
+        <button>Вернуться</button>
+    </a></h2>
+</div>
+<form th:method="put" th:action="@{/banklab/banks/{id}(id=${bankResponseDto.getId()})}" th:object="${bankResponseDto}">
+    <h2>Изменить</h2>
+    <label>
+        Введите название:
+        <input type="text" th:field="*{name}" placeholder="название" required>
+    </label>
+    <label>
+        Введите процентную ставку:
+        <input type="number" step="0.01" th:field="*{interestRate}" placeholder="Название" required>
+    </label>
+    <label>
+        Введите рейтинг:
+        <input type="number" th:field="*{rating}" placeholder="Рейтинг" required>
+    </label>
+    <label>
+        Введите сумму средств:
+        <input type="number" step="0.01" th:field="*{totalMoney}" placeholder="Сумма средств" required>
+    </label>
+    <input type="submit" value="Изменить">
+</form>
+<form th:method="delete" th:action="@{/banklab/banks/{id}(id=${bankResponseDto.getId()})}">
+    <h2>Удалить</h2>
+    <input type="submit" value="Удалить">
+</form>
+</body>
+</html>
