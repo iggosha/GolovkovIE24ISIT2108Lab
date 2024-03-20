@@ -45,7 +45,7 @@ public class BankServiceImpl implements BankService {
     public BankResponseDto getById(Long id) {
         return mappingUtils.mapToBankResponseDto(
                 bankRepository.findById(id)
-                        .orElse(new Bank())
+                        .orElse(null)
         );
     }
 

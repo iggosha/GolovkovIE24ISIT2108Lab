@@ -8,6 +8,9 @@
 </head>
 <body>
 <h1>Банк</h1>
+<h2><a th:href="@{/banklab/banks}">
+    <button>Вернуться</button>
+</a></h2>
 <div th:if="${bankResponseDto}" class="item">
     <h2>Информация</h2>
     <span>Название:</span>
@@ -18,8 +21,8 @@
     <span th:text="${bankResponseDto.getRating()}"></span>
     <span>Сумма средств:</span>
     <span th:text="${bankResponseDto.getTotalMoney()}"></span>
-    <h2><a th:href="@{/banklab/banks}">
-        <button>Вернуться</button>
+    <h2><a th:href="@{/banklab/banks/{id}/offices(id=${bankResponseDto.getId()})}">
+        <button>К офисам</button>
     </a></h2>
 </div>
 <form th:method="put" th:action="@{/banklab/banks/{id}(id=${bankResponseDto.getId()})}" th:object="${bankResponseDto}">

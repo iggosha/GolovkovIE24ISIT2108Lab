@@ -10,40 +10,41 @@ import tech.reliab.course.golovkovie.bank.service.BankService;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("banklab/")
+@RequestMapping("banklab/banks")
 public class BankController {
 
-    private static final String REDIRECT_BANKS = "redirect:/banklab/banks";
-    private static final String REDIRECT_BANK = "redirect:/banklab/banks/{id}";
+    private static final String REDIRECT_BANK_LIST = "redirect:/banklab/banks";
+    private static final String REDIRECT_BANK_ITEM = "redirect:/banklab/banks/{id}";
     private final BankService bankService;
 
-    @PostMapping({"banks", "/banks"})
-    public String postBank(@ModelAttribute("bankRequest") BankRequestDto bankRequestDto) {
+    @PostMapping({"", "/"})
+    public String postBank(@ModelAttribute("bankRequestDto") BankRequestDto bankRequestDto) {
         bankService.create(bankRequestDto);
-        return REDIRECT_BANKS;
+        return REDIRECT_BANK_LIST;
     }
 
-    @GetMapping({"banks", "/banks"})
+    @GetMapping({"", "/"})
     public String getBanks(Model model, @ModelAttribute("bankRequestDto") BankRequestDto bankRequestDto) {
         model.addAttribute("bankResponseDtos", bankService.getAll());
-        return "bank/banks_page";
+        return "bank/list";
     }
 
-    @GetMapping({"banks/{id}", "/banks/{id}/"})
+    @GetMapping({"/{id}", "/{id}/"})
     public String getBank(Model model, @PathVariable("id") Long id) {
         model.addAttribute("bankResponseDto", bankService.getById(id));
-        return "bank/item_bank_page";
+        return "bank/item";
     }
 
-    @PutMapping({"banks/{id}", "/banks/{id}/"})
-    public String putBank(@PathVariable("id") Long id, @ModelAttribute("bankResponse") BankResponseDto bankResponseDto) {
+    @PutMapping({"/{id}", "/{id}/"})
+    public String putBank(@PathVariable("id") Long id,
+                          @ModelAttribute("bankResponseDto") BankResponseDto bankResponseDto) {
         bankService.update(bankResponseDto);
-        return REDIRECT_BANK;
+        return REDIRECT_BANK_ITEM;
     }
 
-    @DeleteMapping({"banks/{id}", "/banks/{id}/"})
+    @DeleteMapping({"/{id}", "/{id}/"})
     public String deleteBank(@PathVariable("id") Long id) {
         bankService.deleteById(id);
-        return REDIRECT_BANKS;
+        return REDIRECT_BANK_LIST;
     }
 }

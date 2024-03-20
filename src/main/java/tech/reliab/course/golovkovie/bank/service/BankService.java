@@ -5,9 +5,6 @@ import tech.reliab.course.golovkovie.bank.model.dto.response.BankResponseDto;
 
 import java.util.List;
 
-/**
- * The interface Bank service.
- */
 public interface BankService {
 
     void create(BankRequestDto bankRequestDto);

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BankLab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/resources/css/styles.css}" type="text/css">
+    <link rel="icon" th:href="@{/resources/img/logo.png}" type="image/png" sizes="64x64">
+</head>
+<body>
+<h1>Офис банка</h1>
+<div th:if="${bankOfficeResponseDto}" class="item">
+    <h2>Информация</h2>
+    <span>Название:</span>
+    <span th:text="${bankOfficeResponseDto.getName()}"></span>
+    <span>Адрес:</span>
+    <span th:text="${bankOfficeResponseDto.getAddress()}"></span>
+    <span>Сумма денег:</span>
+    <span th:text="${bankOfficeResponseDto.getTotalMoney()}"></span>
+    <span>Стоимость аренды:</span>
+    <span th:text="${bankOfficeResponseDto.getRentCost()}"></span>
+    <span>Статус работы:</span>
+    <span th:text="${bankOfficeResponseDto.getIsWorking()}"></span>
+    <span>Возможность размещения банкомата:</span>
+    <span th:text="${bankOfficeResponseDto.getCanPlaceAtm()}"></span>
+    <span>Возможность выдачи кредита:</span>
+    <span th:text="${bankOfficeResponseDto.getCanIssueCredit()}"></span>
+    <span>Возможность выдачи денег:</span>
+    <span th:text="${bankOfficeResponseDto.getCanDispenseMoney()}"></span>
+    <span>Возможность приёма денег:</span>
+    <span th:text="${bankOfficeResponseDto.getCanAcceptMoney()}"></span>
+    <h2><a th:href="@{/banklab/banks/{bankId}/offices(bankId=${bankId})}">
+        <button>Вернуться</button>
+    </a></h2>
+</div>
+<form th:method="put"
+      th:action="@{/banklab/banks/{bankId}/offices/{id}(bankId=${bankId}, id=${bankOfficeResponseDto.getId()})}"
+      th:object="${bankOfficeResponseDto}"
+>
+    <h2>Изменить</h2>
+    <label>
+        Введите название:
+        <input type="text" th:field="*{name}" placeholder="Название" required>
+    </label>
+    <label>
+        Введите адрес:
+        <input type="text" th:field="*{address}" placeholder="Адрес" required>
+    </label>
+    <label>
+        Введите сумму денег:
+        <input type="number" step="0.01" th:field="*{totalMoney}" placeholder="Сумма денег" required>
+    </label>
+    <label>
+        Введите стоимость аренды:
+        <input type="number" step="0.01" th:field="*{rentCost}" placeholder="Стоимость аренды" required>
+    </label>
+    <label>
+        Введите статус работы:
+        <input type="checkbox" th:field="*{isWorking}" placeholder="Статус работы">
+    </label>
+    <label>
+        Введите возможность размещения банкомата:
+        <input type="checkbox" th:field="*{canPlaceAtm}" placeholder="Возможность размещения банкомата">
+    </label>
+    <label>
+        Введите возможность выдачи кредита:
+        <input type="checkbox" th:field="*{canIssueCredit}" placeholder="Возможность выдачи кредита">
+    </label>
+    <label>
+        Введите возможность выдачи денег:
+        <input type="checkbox" th:field="*{canDispenseMoney}" placeholder="Возможность выдачи денег">
+    </label>
+    <label>
+        Введите возможность приёма денег:
+        <input type="checkbox" th:field="*{canAcceptMoney}" placeholder="Возможность приёма денег">
+    </label>
+    <input type="submit" value="Изменить">
+</form>
+<form
+        th:method="delete"
+        th:action="@{/banklab/banks/{bankId}/offices/{id}(bankId=${bankId}, id=${bankOfficeResponseDto.getId()})}"
+>
+    <h2>Удалить</h2>
+    <input type="submit" value="Удалить">
+</form>
+</body>
+</html>

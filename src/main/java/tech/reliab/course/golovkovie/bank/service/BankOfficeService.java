@@ -1,59 +1,20 @@
 package tech.reliab.course.golovkovie.bank.service;
 
-import tech.reliab.course.golovkovie.bank.model.entity.Bank;
-import tech.reliab.course.golovkovie.bank.model.entity.BankOffice;
+import tech.reliab.course.golovkovie.bank.model.dto.request.BankOfficeRequestDto;
+import tech.reliab.course.golovkovie.bank.model.dto.response.BankOfficeResponseDto;
 
-/**
- * The interface Bank office service.
- */
+import java.util.List;
+
 public interface BankOfficeService {
 
-    /**
-     * Create bank office.
-     *
-     * @param id               the id
-     * @param name             the name
-     * @param address          the address
-     * @param isWorking        is working
-     * @param canPlaceAtm      can place atm
-     * @param rentCost         the rent cost
-     * @param canIssueCredit   can issue credit
-     * @param canDispenseMoney can dispense money
-     * @param canAcceptMoney   can accept money
-     * @param bank             the bank
-     * @return the bank office
-     */
-    BankOffice createBankOffice(Long id,
-                                String name,
-                                String address,
-                                Double totalMoney,
-                                Double rentCost,
-                                Boolean isWorking,
-                                Boolean canPlaceAtm,
-                                Boolean canIssueCredit,
-                                Boolean canDispenseMoney,
-                                Boolean canAcceptMoney,
-                                Bank bank);
+    void create(BankOfficeRequestDto bankOfficeRequestDto,
+                Long bankId);
 
-    /**
-     * Gets bank office by id.
-     *
-     * @param id the id
-     * @return the bank office by id
-     */
-    BankOffice getBankOfficeById(Long id);
+    BankOfficeResponseDto getById(Long id);
 
-    /**
-     * Update bank office by id.
-     *
-     * @param id the id
-     */
-    void updateBankOfficeById(Long id);
+    List<BankOfficeResponseDto> getAllByBankId(Long bankId);
 
-    /**
-     * Delete bank office by id.
-     *
-     * @param id the id
-     */
-    void deleteBankOfficeById(Long id);
+    void update(BankOfficeResponseDto bankOfficeResponseDto, Long bankId);
+
+    void deleteById(Long id);
 }

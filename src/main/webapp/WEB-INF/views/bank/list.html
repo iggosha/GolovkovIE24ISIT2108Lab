@@ -8,7 +8,10 @@
 </head>
 <body>
 <h1>Банки</h1>
-<form th:method="post" th:action="@{/banklab/banks}" th:object="${bankRequestDto}">
+<form th:method="post"
+      th:action="@{/banklab/banks}"
+      th:object="${bankRequestDto}"
+>
     <h2>Добавить банк</h2>
     <label>
         Введите название:
