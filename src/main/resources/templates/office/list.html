@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>BankLab</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/resources/css/styles.css}" type="text/css">
-    <link rel="icon" th:href="@{/resources/img/logo.png}" type="image/png" sizes="64x64">
-</head>
+<div th:replace="~{/header_template.html}"></div>
+
 <body>
 <h1>Офисы банка</h1>
 <h2><a th:href="@{/banklab/banks/{bankId}(bankId = ${bankId})}">
